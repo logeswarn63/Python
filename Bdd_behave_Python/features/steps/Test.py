@@ -38,7 +38,16 @@ def step_impl(context, searchkeyword):
     context.driver.find_element(By.CSS_SELECTOR, "[type='text']").send_keys(Keys.ENTER)
 
 
-@then('select processor checkbox filter')
+@then('verify search results based on "{searchkeyword}"')
+def step_impl(context, searchkeyword):
+    search_result = context.driver.find_element(By.CSS_SELECTOR, "span[class] span").text
+    if searchkeyword in search_result:
+        print("Search result is based on the keyword searched")
+    else:
+        print("Search result is not based on the keyword searched")
+
+
+@then('select checkbox filter')
 def step_impl(context):
     # explicit wait is used here
     time.sleep(3)

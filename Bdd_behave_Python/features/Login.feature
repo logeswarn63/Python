@@ -1,7 +1,7 @@
 Feature: Flipkart website
 
    # Test Case 1
-  Scenario: Validate Flipkart site Functionality
+  Scenario: Validate Flipkart site product search functionality
     Given launch the browser
     When open flipkart website
     Then search for dell laptop
@@ -10,11 +10,13 @@ Feature: Flipkart website
     And close the browser
 
 
-  Scenario Outline:
-        Given launch the browser
+  Scenario Outline: Validate Flipkart site product search functionality with examples
+    Given launch the browser
     When open flipkart website
     Then search for "<searchkeyword>"
-    And select processor checkbox filter
+    Then verify search results based on "<searchkeyword>"
+    And select checkbox filter
     Examples:
       | searchkeyword |
       |Hp laptops   |
+      |Shoes for men|
